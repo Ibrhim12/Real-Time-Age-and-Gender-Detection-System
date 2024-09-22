@@ -32,11 +32,6 @@ To run the project, you will need the following dependencies:
 - NumPy
 - Matplotlib
 
-You can install the required packages by running:
-```bash
-pip install -r requirements.txt
-```
-
 ## Usage Instructions
 
 ### Running the Flask App
