@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Age & Gender Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <video id="background-video" autoplay muted loop>
+        <source src="{{ url_for('static', filename='background.mp4') }}" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="container">
+        <div class="title-section">
+            <h1>Age & Gender Detection System</h1>
+        </div>
+        <div class="video-container">
+            <button id="open-camera">Open Camera</button>
+            <div id="camera-feed" style="display: none;">
+                <img src="{{ url_for('video_feed') }}" id="video-feed">
+                <form method="POST" action="{{ url_for('capture') }}">
+                    <button type="submit" id="capture-button">Capture</button>
+                </form>
+            </div>
+            {% if result %}
+            <div class="result-box">
+                <p class="result-text"><strong>{{ result }}</strong></p>
+                <p class="disclaimer">Note: The detected result could be wrong.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        document.getElementById('open-camera').onclick = function() {
+            document.getElementById('camera-feed').style.display = 'block';
+            this.style.display = 'none';
+        };
+    </script>
+</body>
+</html>
